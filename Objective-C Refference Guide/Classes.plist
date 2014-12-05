@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Classes</key>
+	<dict>
+		<key>Category definition</key>
+		<string>@interface className (categoryName) &lt;protocol1,...&gt;
+methodDeclaration
+methodDeclaration  
+...
+@end</string>
+		<key>Class Implementation</key>
+		<string>@implementation className;
+methodDecleration methodDecleration ... @end</string>
+		<key>Class Interface</key>
+		<string>@interface className : parentClass &lt;protocol1, ... &gt; { instanceVariableDeclarations } methodDeclaration @end</string>
+		<key>Message Expressions</key>
+		<string>Format 1 [receiver name1: arg1 name2: arg2, name3: arg3 ...]  Format 2 [receiver name];  Format 3 receiver.property or [receiver.property]   Format 4 receiver.property = expression</string>
+		<key>Method declaration</key>
+		<string>General Format  mType (returnType) name1 : (type1) param1 name2 : (type2) param2, ...;  mType :   &quot;+&quot; - is for class methods &quot;-&quot; - is for instance methods</string>
+	</dict>
+	<key>Constants</key>
+	<dict>
+		<key>Character constants</key>
+		<string>Character literals are enclosed in single quotes e.g., &apos;x&apos; and can be stored in a simple variable of char type.  A character literal can be a plain character (e.g., &apos;x&apos;), an escape sequence (e.g., &apos;\t&apos;), or a universal character (e.g., &apos;\u02C0&apos;).</string>
+		<key>Integer Literals</key>
+		<string>An integer literal can be a decimal, octal, or hexadecimal constant. A prefix specifies the base or radix: 0x or 0X for hexadecimal, 0 for octal, and nothing for decimal.
+
+An integer literal can also have a suffix that is a combination of U and L, for unsigned and long, respectively. The suffix can be uppercase or lowercase and can be in any order.
+
+Here are some examples of integer literals:
+
+212         /* Legal */
+215u        /* Legal */
+0xFeeL      /* Legal */
+078         /* Illegal: 8 is not an octal digit */
+032UU       /* Illegal: cannot repeat a suffix */
+</string>
+		<key>Floating-point literals</key>
+		<string>A floating-point literal has an integer part, a decimal point, a fractional part, and an exponent part. You can represent floating point literals either in decimal form or exponential form.
+
+While representing using decimal form, you must include the decimal point, the exponent, or both and while representing using exponential form, you must include the integer part, the fractional part, or both. The signed exponent is introduced by e or E.
+
+Here are some examples of floating-point literals:
+
+3.14159       /* Legal */
+314159E-5L    /* Legal */</string>
+		<key>String literals</key>
+		<string>String literals or constants are enclosed in double quotes &quot;&quot;. A string contains characters that are similar to character literals: plain characters, escape sequences, and universal characters.
+
+You can break a long line into multiple lines using string literals and separating them using whitespaces.
+
+Here are some examples of string literals. All the three forms are identical strings.
+
+&quot;hello, dear&quot;
+
+&quot;hello, \
+
+dear&quot;
+
+&quot;hello, &quot; &quot;d&quot; &quot;ear&quot;</string>
+		<key>Defining Constants</key>
+		<string>There are two simple ways in C to define constants:
+
+Using #define preprocessor.
+
+Using const keyword.
+
+</string>
+		<key>The #define Preprocessor</key>
+		<string>Following is the form to use #define preprocessor to define a constant:
+
+#define identifier value
+Following example explains it in detail:
+
+#import &lt;Foundation/Foundation.h&gt;
+
+#define LENGTH 10   
+#define WIDTH  5
+#define NEWLINE &apos;\n&apos;
+
+int main()
+{
+
+   int area;  
+  
+   area = LENGTH * WIDTH;
+   NSLog(@&quot;value of area : %d&quot;, area);
+   NSLog(@&quot;%c&quot;, NEWLINE);
+
+   return 0;
+}</string>
+		<key>The const Keyword</key>
+		<string>You can use const prefix to declare constants with a specific type as follows:
+
+const type variable = value;
+Following example explains it in detail:
+
+#import &lt;Foundation/Foundation.h&gt;
+
+int main()
+{
+   const int  LENGTH = 10;
+   const int  WIDTH  = 5;
+   const char NEWLINE = &apos;\n&apos;;
+   int area;  
+   
+   area = LENGTH * WIDTH;
+   NSLog(@&quot;value of area : %d&quot;, area);
+   NSLog(@&quot;%c&quot;, NEWLINE);
+
+   return 0;
+}</string>
+	</dict>
+	<key>Data types</key>
+	<dict>
+		<key>int Data Type</key>
+		<string>The Objective-C int data type can store a positive or negative whole number (in other words a number with no decimal places). The actual size or range of integer that can be handled by the int data type is machine and compiler implementation dependent. Typically the amount of storage allocated to int values is either 32-bit or 64-bit depending on the implementation of Objective-C on that platform or the CPU on which the compiler is running. It is important to note, however, that the operating system also plays a role in whether int values are 32 or 64-bit. For example the CPU in a computer may be 64-bit but the operating system running on it may only be 32-bit.
+For example, on a 32-bit implementation, the maximum range of an unsigned int is 0 to 4294967295. On a 64-bit system this range would be 0 to 18,446,744,073,709,551,615. When dealing with signed int values, the ranges are −2,147,483,648 to +2,147,483,647 and −9,223,372,036,854,775,808 to +9,223,372,036,854,775,807 for 32-bit and 64-bit implementations respectively.
+When writing an Objective-C program, the only guarantee you have is that an int will be at least 32-bits wide. To avoid future problems when compiling the code on other platforms it is safer to limit int values to the 32-bit range, rather than assume that 64-bit will be available.
+By default, int values are decimal (i.e. based on number base 10). To express an int in Octal (number base 8) simply precede the number with a zero (0). For example:
+int myoctal = 024;
+Similarly, an int may be expressed in number base 16 (hexadecimal) by preceding the number with 0x, for example:
+int myhex = 0xFFA2;</string>
+		<key>char Data Type</key>
+		<string>The Objective-C char data type is used to store a single character such as a letter, numerical digit or punctuation mark or space character. For example, the following lines assign a variety of different characters to char type variables:
+char myChar = &apos;w&apos;;
+char myChar = &apos;2&apos;;
+char myChar = &apos;:&apos;;</string>
+		<key>Special Characters/Escape Sequences</key>
+		<string>In addition to the standard set of characters outlined above, there is also a range of special characters (also referred to as escape sequences) available for specifying items such as a new line or tab. These special characters are identified by prefixing the character with a backslash (a concept referred to as escaping). For example, the following assigns a new line to the variable named newline:
+char newline = &apos;\n&apos;;
+In essence, any character that is preceded by a backslash is considered to be a special character and is treating accordingly. This raises the question as to what to do if you actually want a backslash character. This is achieved by escaping the backslash itself:
+char myslash = &apos;\\&apos;; Assign a backslash to a variable
+Commonly used special characters supported by Objective-C are as follows:
+\a - Sound alert
+\b - Backspace
+\f - Form feed
+\n - New line
+\r - Carriage return
+\t - Horizontal tab
+\v - Vertical tab
+\\ - Backslash
+\&quot; - Double quote (used when placing a double quote into a string declaration)
+\&apos; - Single quote (used when placing a double quote into a string declaration)</string>
+		<key>float Data Type</key>
+		<string>The Objective-C float data type is used to store floating point values, in other words values containing decimal places. For example, 456.12 would be stored in a float data type. In practice, all floating point values are stored as a different data type (called double) by default. We will be covering the double data type next, but if you specifically want to use a float data type, you must append an f into the end of the value. For example:
+float myfloat = 123.432f
+For convenience when working with exceptionally large number, both floating point and double data type values can be specified using scientific notation (also known as standard form or exponential notation). For example, we can express 67.7 x 104 in Objective-C as:
+float myfloat = 67.7e4</string>
+		<key>double Data Type</key>
+		<string>The Objective-C double data type is used to store larger values than can be handled by the float data type. The term double comes from the fact that a double can handle values twice the size of a float. As previously mentioned, all floating point values are stored as double data types unless the value is followed by an &apos;f&apos; to specifically specify a float rather than as a double.</string>
+		<key>id Data Type</key>
+		<string>Objective-C is an object oriented language. As such much of the way a program will be structured is in the form of reusable objects. These objects are called upon to perform tasks and return results. Often, the information passed into an object and the results returned will be in the form of yet another object. The id data type is a general purpose data type that can be used to store a reference to any object, regardless of its type.</string>
+		<key>BOOL Data Type
+
+</key>
+		<string>Objective-C, like other languages, includes a data type for the purpose of handling true or false (1 or 0) conditions. Such a data type is declared using either the _Bool or BOOL keywords. Both of the following expressions are valid:
+_Bool flag = 0;
+BOOL secondflag = 1;</string>
+	</dict>
+	<key>Arrays</key>
+	<dict>
+		<key>Declaring Arrays</key>
+		<string>To declare an array in Objective-C, a programmer specifies the type of the elements and the number of elements required by an array as follows:
+
+type arrayName [ arraySize ];
+This is called a single-dimensional array. The arraySize must be an integer constant greater than zero and type can be any valid Objective-C data type. For example, to declare a 10-element array called balance of type double, use this statement:
+
+double balance[10];
+Now, balance is a variable array, which is sufficient to hold up to 10 double numbers.</string>
+		<key>Initializing Arrays</key>
+		<string>You can initialize an array in Objective-C either one by one or using a single statement as follows:
+
+double balance[5] = {1000.0, 2.0, 3.4, 17.0, 50.0};
+The number of values between braces { } can not be larger than the number of elements that we declare for the array between square brackets [ ]. Following is an example to assign a single element of the array:
+
+If you omit the size of the array, an array just big enough to hold the initialization is created. Therefore, if you write:
+
+double balance[] = {1000.0, 2.0, 3.4, 17.0, 50.0};
+You will create exactly the same array as you did in the previous example.
+
+balance[4] = 50.0;</string>
+		<key>Accessing Array Elements</key>
+		<string>An element is accessed by indexing the array name. This is done by placing the index of the element within square brackets after the name of the array. For example:
+
+double salary = balance[9];
+The above statement will take 10th element from the array and assign the value to salary variable. </string>
+	</dict>
+	<key>Loops</key>
+	<dict>
+		<key>While loop	</key>
+		<string>Repeats a statement or group of statements while a given condition is true. It tests the condition before executing the loop body.  while (&apos;&apos;condition&apos;&apos;)
+{
+      // Objective-C statements go here
+}</string>
+		<key>For loop</key>
+		<string>Execute a sequence of statements multiple times and abbreviates the code that manages the loop variable.  for (/* Instantiate local variables*/ ; /* Condition to keep looping. */ ; /* End of loop expressions */)
+{
+    // Do something.
+}</string>
+		<key>Do...while loop</key>
+		<string>Like a while statement, except that it tests the condition at the end of the loop body.  do
+{
+       // Objective-C statements here
+} while (&apos;&apos;conditional expression&apos;&apos;)</string>
+		<key>Breaking from Loops</key>
+		<string>As with the for loop, it is also possible to exit from a while or do while loop at any time through the use of the break statement. When the execution path encounters a break statement the looping will stop and execution will proceed to the code immediately following the loop. In the following example, the loop is coded to exit when the value of i matches the value of j:
+int i = 0;
+
+int j = 5;
+
+while (i &lt; 100)
+{
+     i++;
+
+     if (i == j)
+           break;
+}
+It is important to note that in the case of nested loops the break statement only exits the current loop leaving the outer loop to continue executing (and most likely once again executing the inner loop).</string>
+		<key>The continue Statement</key>
+		<string>The continue statement causes all remaining code statements in a loop to be skipped, and execution to be returned to the top of the loop. In the following example, the NSLog function is only called when the value of variable i is an even number (i.e divisible by 2 with no remainder):
+int i = 1;
+
+while (i &lt; 20)
+{
+        i++;
+ 	if ((i % 2) != 0)
+		continue;
+
+	NSLog (@&quot;i = %i&quot;, i);	
+}</string>
+	</dict>
+	<key>Flow Control</key>
+	<dict>
+		<key>Using the if Statement</key>
+		<string>The if statement is perhaps the most basic of flow control options available to the Objective-C programmer. Programmers who are familiar with C, C++ or Java will immediately be comfortable using Objective-C if statements.
+The basic syntax of the Objective-C if statement is as follows:
+if (boolean expression) {
+// Objective-C code to be performed when expression evaluates to true
+}</string>
+		<key>Using if ... else .. Statements</key>
+		<string>The next variation of the if statement allows us to also specify some code to perform if the expression in the if statement evaluates to false. The syntax for this construct is as follows:
+if (boolean expression) {
+// Code to be executed if expression is true
+} else {
+// Code to be executed if expression is false
+}</string>
+		<key>Using if ... else if .. Statements</key>
+		<string>So far we have looked at if statements which make decisions based on the result of a single logical expression. Sometimes it becomes necessary to make decisions based on a number of different criteria. For this purpose we can use the if ... else if ... construct, the syntax for which is as follows:
+int x = 9;
+
+if (x == 10)
+{
+       NSLog (@&quot;x is 10&quot;);
+}
+else if (x == 9)
+{
+NSLog (@&quot;x is 9&quot;);
+}
+else if (x == 8)
+{
+         NSLog (@&quot;x is 8&quot;);
+}</string>
+	</dict>
+	<key>Enumerators</key>
+	<dict>
+		<key>Why Use Enumerators</key>
+		<string>Objective-C Enumerators allow variables to be declared with a predefined list of valid values, each of which is assigned a name that can be used when setting the variable. This has the advantage of making the code easier to read and understand.  As previously described, enumerators allow the programmer to predefine the range of values that can be assigned to a variable and use self-explanatory names when setting those values. The benefits of this are twofold. Firstly this makes code easier to read and understand and secondly this, to a certain extent, allows control of the values that can be assigned (though as we will see later in this chapter, enforcement is rather weak).</string>
+		<key>Declaring an Enumeration</key>
+		<string>The syntax for declaring an enumeration is as follows:
+
+enum &lt;name&gt; { &lt;value name 1&gt;, &lt;value name 2&gt;, ... };
+
+In the above syntax outline, enum is the keyword that tells the compiler we are creating an enumeration, &lt;name&gt; is the name to be assigned to the enumeration and the &lt;value name&gt; fields are the names that can be used to set the variable. Internally, enumerators use numbers corresponding to the value names. By default the first value corresponds to 0, the second to 1 and so on. It is also possible to specify the values used by each value name:
+enum &lt;name&gt; { &lt;value name 1&gt; = &lt;value1&gt;, &lt;value name 2&gt; = &lt;value2&gt;, ... };</string>
+		<key>Creating and Using an Enumeration</key>
+		<string>Having declared an enumeration the next step is to declare a variable of that type. For example, to create a variable called currentTemp from our temperature enumerator type we would write the following code:
+enum temperature currentTemp;
+Now that we have created a variable based on our enumerator data type, we can try setting a value using one of the value names and then displaying the current value of the variable:
+int currentTemp = hot;
+
+NSLog (@&quot;Current temperature is %i&quot;, currentTemp);
+When compiled and executed, the above code will output the following:
+2009-10-21 10:25:46.640 t[11525:10b] Current temperature is 95</string>
+		<key>Enumerators and Variable Names</key>
+		<string>When using enumerators in Objective-C it is important to be aware that both the enumerator name and the value names are treated as symbols that must be unique within the given scope. For example, because we use the value name hot in our temperature enumerator we cannot then use hot as a variable name within the same scope (for information on variable scope refer to Objective-C Variable Scope and Storage Class). Take, for the example, the following code. Here we have our temperature enumerator and also a declaration for a variable named hot:
+enum temperature {cold = 5, warm = 50, hot = 95};
+
+enum temperature currentTemp;
+
+int hot = 100;
+
+int currentTemp = hot;
+
+NSLog (@&quot;Current temperature is %i&quot;, currentTemp);</string>
+	</dict>
+	<key>Overview of Objective-C OOP</key>
+	<dict>
+		<key>What is an Object?</key>
+		<string>Objects are a self-contained piece of functionality that can be easily used, and re-used as the building blocks for a software application.
+Objects consist of data variables and functions (called methods) that can be accessed and called on the object to perform tasks. These are collectively referred to as members.</string>
+		<key>What is a Class?</key>
+		<string>Much as a blueprint or architect&apos;s drawing defines what an item or a building will look like once it has been constructed, a class defines what an object will look like when it is created. It defines, for example, what the methods will do and what the member variables will be.</string>
+		<key>Declaring a Class Interface</key>
+		<string>Before an object can be instantiated we first need to define the class &apos;blueprint&apos; for the object. In this chapter we will create a Bank Account class to demonstrate the basic concepts of Objective-C object oriented programming.
+An Objective-C class is defined in terms of an interface and an implementation. In the interface section of the definition we specify the base class from which the new class is derived and also define the members and methods that the class will contain. The syntax for the interface section of a class is as follows:
+@interface NewClassName: ParentClass {
+ClassMembers;
+}
+
+ClassMethods;
+@end</string>
+		<key>Instance Variables in Class</key>
+		<string>A key objective of object oriented programming is a concept referred to as data encapsulation. The idea behind data encapsulation is that data should be stored within classes and accessed only through methods defined in that class. Data encapsulated in a class are referred to as instance variables.
+Instances of our BankAccount class will be required to store some data, specifically a bank account number and the balance currently held by the account. Instance variables are declared in the same way any other variables are declared in Objective-C. We can, therefore, add these variables as follows:
+@interface BankAccount: NSObject
+{
+        double accountBalance;
+        long accountNumber;
+}
+
+@end</string>
+		<key>Data Encapsulation</key>
+		<string>In the previous chapter we mentioned briefly the concept of data encapsulation whereby data is contained within objects and is not accessible by any means other than via methods defined on the class. In our BankAccount class example we defined two instance variables and then wrote some methods to get, set and display those values. In this chapter we will look at some alternate programming techniques to access the data encapsulated in a class.</string>
+		<key>Synthesized Accessor Methods</key>
+		<string>Accessor methods (also referred to as getters and setters) are methods belonging to a class that allow the programmer to get and set the values of instance variables contained within that class. In our BankAccount example covered in the previous chapter we wrote accessor methods to get and set the bank account number and bank balance variables. As you can probably imagine, having to write these methods for large numbers of complex classes will ultimately prove to be time consuming. Fortunately, Objective-C provides a mechanism that automates the creation of accessor methods. These are called synthesized accessor methods and are implemented through the use of the @property and @synthesize directives. The following code demonstrates a modified version of our BankAcount class @interface definition with the two getters and setters we original wrote removed and replaced by @property directives:
+#import &lt;Foundation/Foundation.h&gt;
+
+@interface BankAccount: NSObject
+{
+        double accountBalance;
+        long accountNumber;
+}
+
+@property double accountBalance;
+@property long accountNumber;
+
+-(void) displayAccountInfo;
+@end
+Note that because the two properties are of different data types (double and long) it was necessary to declare them on separate @property lines. Had they been of the same data type we could have placed them on the same line, separated by commas.</string>
+		<key>Direct Access to Encapsulated Data</key>
+		<string>Data encapsulation encourages the use of methods to get and set the values of instance variables in a class. Now is probably the time to point out this is a guideline rather than a rule. In fact, it is quite common for developers to want to directly access an instance variable without having to go through an accessor method. The Objective-C syntax for referencing an instance variable is as follows:
+[classinstance variablename]
+Taking our BankAccount example, therefore, we could get the value of our accountNumber instance variable and assign it to a variable named balance1 as follows:
+double balance1 = [account1 accountBalance];</string>
+		<key>Objective-C and Dot Notation</key>
+		<string>Those familiar with object oriented programming in Java, C++ or C# are probably reeling a little from the syntax used in Objective-C. They are probably thinking life was much easier when they could just use something called dot notation to set and get the values of instance variables. The good news is that one of the features introduced into version 2.0 of Objective-C is support for dot notation.
+Dot notation involves accessing an instance variable by specifying a class instance followed by a dot followed in turn by the name of the instance variable or property to be accessed:
+classinstance.property
+For example, to the get current value of our accountBalance instance variable:
+double balance1 = account1.accountBalance;
+Dot notation can also be used to set values of instance properties:
+account1.accountBalance = 6789.98;</string>
+		<key>Controlling Access to Instance Variables</key>
+		<string>By default, instance variables in a class can be accessed by the methods of that class. This is the default for instance variables and is called protected access. In addition to protected access, a number of other options are available:
+protected - Access is allowed only by methods of the class and any subclasses.
+private - Access is restricted to methods of the class. Access is not available to subclasses.
+public - Direct access available to methods of the class, subclasses and code in other module files and classes.
+The access level for instance variables is specified in the @interface section of the class declaration using the @protected, @private and @public directives. Once a directive has been specified, all instance variables beneath that line adopt that setting until another directive is specified. For example:
+@interface
+{
+      double accountBalance;
+@private
+      long accountNumber;
+      int accessCount;
+@public
+      float interestRate;
+}
+In the above example, accountbalance will default to protected access since it is not preceded by a directive, accountNumber and accessCount are both private and interestRate is public.</string>
+	</dict>
+	<key>Operators and Expressions</key>
+	<dict>
+		<key>What is an Expression?</key>
+		<string>The most basic expression consists of an operator, two operands and an assignment. The following is an example of an expression:
+int myresult = 1 + 2;
+In the above example the (+) operator is used to add two operands (1 and 2) together. The assignment operator (=) subsequently assigns the result of the addition to an integer variable named myresult. The operands could just have easily been variables (or a mixture of constants and variables) instead of the actual numerical values used in the example.
+In the remainder of this chapter we will look at the various types of operators available in Objective-C.</string>
+		<key>The Basic Assignment Operator</key>
+		<string>We have already looked at the most basic of assignment operators, the = operator. This assignment operator simply assigns the result of an expression to a variable. In essence, the = assignment operator takes two operands. The left hand operand is the variable to which a value is to be assigned and the right hand operand is the value to be assigned. The right hand operand is, more often than not, an expression which performs some type of arithmetic or logical evaluation, the result of which will be assigned to the variable. The following examples are all valid uses of the assignment operator:
+int x; // declare the variable
+
+x = 10;  // Assigns the value 10 to a variable named x
+
+x = y + z; // Assigns the result of variable y added to variable z to variable x
+
+x = y;   // Assigns the value of variable y to variable x
+Assignment operators may also be chained to assign the same value to multiple variables. For example, the following code example assigns the value 20 to the x, y and z variables:
+int x, y, z;
+
+x = y = z = 20;</string>
+		<key>Arithmetic Operators</key>
+		<string>Objective-C provides a range of operators for the purpose of creating mathematical expressions. These operators primarily fall into the category of binary operators in that they take two operands. The exception is the unary negative operator (-) which serves to indicate that a value is negative rather than positive. This contrasts with the subtraction operator (-) which takes two operands (i.e. one value to be subtracted from another). For example:
+int x = -10; // Unary - operator used to assign -10 to a variable named x
+
+x = y - z; // Subtraction operator. Subtracts z from y</string>
+		<key>Compound Assignment Operators</key>
+		<string> Objective-C provides a number of operators designed to combine an assignment with a mathematical or logical operation. These are primarily of use when performing an evaluation where the result is to be stored in one of the operands. For example, one might write an expression as follows:
+x = x + y;
+The above expression adds the value contained in variable x to the value contained in variable y and stores the result in variable x. This can be simplified using the addition compound assignment operator:
+x += y
+The above expression performs exactly the same task as x = x + y but saves the programmer some typing.
+Numerous compound assignment operators are available in Objective-C. The most frequently used are outlined in the following table:
+
+Operator	Description
+x += y	Add x to y and place result in x
+x -= y	Subtract y from x and place result in x
+x *= y	Multiply x by y and place result in x
+x /= y	Divide x by y and place result in x
+x %= y	Perform Modulo on x and y and place result in x
+x &amp;= y	Assign to x the result of logical AND operation on x and y
+x |= y	Assign to x the result of logical OR operation on x and y
+x ^= y	Assign to x the result of logical Exclusive OR on x and y
+</string>
+		<key>Increment and Decrement</key>
+		<string>Another useful shortcut can be achieved using the Objective-C increment and decrement operators (also referred to as unary operators because they operate on a single operand). As with the compound assignment operators described in the previous section, consider the following Objective-C code fragment:
+x = x + 1; // Increase value of variable x by 1
+
+x = x - 1; // Decrease value of variable x by 1
+These expressions increment and decrement the value of x by 1. Instead of using this approach it is quicker to use the ++ and -- operators. The following examples perform exactly the same tasks as the examples above:
+x++; Increment x by 1
+
+x--; Decrement x by 1
+These operators can be placed either before or after the variable name. If the operator is placed before the variable name the increment or decrement is performed before any other operations are performed on the variable. For example, in the following example, x is incremented before it is assigned to y, leaving y with a value of 10:
+int x = 9;
+int y;
+
+y = ++x;
+In the next example, however, the value of x (9) is assigned to variable y before the decrement is performed. After the expression is evaluated the value of y will be 9 and the value of x will be 8.
+int x = 9;
+int y;
+
+y = x--;</string>
+		<key>Comparison Operators</key>
+		<string>In addition to mathematical and assignment operators, Objective-C also includes set of logical operators useful for performing comparisons. These operators all return a Boolean (BOOL) true (1) or false (0) result depending on the result of the comparison. These operators are binary operators in that they work with two operands.
+Comparison operators are most frequently used in constructing program flow control logic. For example an if statement may be constructed based on whether one value matches another:
+if (x == y)
+      // Perform task
+The result of a comparison may also be stored in a BOOL variable. For example, the following code will result in a true (1) value being stored in the variable result:
+BOOL result;
+int x = 10;
+int y = 20;
+
+result = x &lt; y;
+Clearly 10 is less than 20, resulting in a true evaluation of the x &lt; y expression. The following table lists the full set of Objective-C comparison operators:
+Operator	Description
+x == y	Returns true if x is equal to y
+x &gt; y	Returns true if x is greater than y
+x &gt;= y	Returns true if x is greater than or equal to y
+x &lt; y	Returns true if x is less than y
+x &lt;= y	Returns true if x is less than or equal to y
+x != y	Returns true if x is not equal to y
+</string>
+		<key>Boolean Logical Operators</key>
+		<string>Objective-C also provides a set of so called logical operators designed to return boolean true and false. In practice true equates to 1 and false equates to 0. These operators both return boolean results and take boolean values as operands. The key operators are NOT (!), AND (&amp;&amp;), OR (||) and XOR (^).
+The NOT (!) operator simply inverts the current value of a boolean variable, or the result of an expression. For example, if a variable named flag is currently 1 (true), prefixing the variable with a &apos;!&apos; character will invert the value to 0 (false):
+bool flag = true; //variable is true
+bool secondFlag;
+
+secondFlag = !flag; // secondFlag set to false
+The OR (||) operator returns 1 if one of its two operands evaluates to true, otherwise it returns 0. For example, the following example evaluates to true because at least one of the expressions either side of the OR operator is true:
+if ((10 &lt; 20) || (20 &lt; 10))
+        NSLog (@&quot;Expression is true&quot;);
+
+The AND (&amp;&amp;) operator returns 1 only if both operands evaluate to be true. The following example will return 0 because only one of the two operand expressions evaluates to true:
+if ((10 &lt; 20) &amp;&amp; (20 &lt; 10))
+      NSLog (@&quot;Expression is true&quot;);
+The XOR (^) operator returns 1 if one and only one of the two operands evaluates to true. For example, the following example will return 1 since only one operator evaluates to be true:
+if ((10 &lt; 20) ^ (20 &lt; 10))
+      NSLog (@&quot;Expression is true&quot;);
+If both operands evaluated to be true or both were false the expression would return false.</string>
+		<key>The Ternary Operator</key>
+		<string>Objective-C uses something called a ternary operator to provide a shortcut way of making decisions. The syntax of the ternary operator (also known as the conditional operator) is as follows:
+[condition] ? [true expression] : [false expression]
+The way this works is that [condition] is replaced with an expression that will return either true (1) or false (0). If the result is true then the expression that replaces the [true expression] is evaluated. Conversely, if the result was false then the [false expression] is evaluated. Let&apos;s see this in action:
+int x = 10;
+int y = 20;
+
+NSLog(@&quot;Largest number is %i&quot;, x &gt; y ? x : y );
+The above code example will evaluate whether x is greater than y. Clearly this will evaluate to false resulting in y being returned to the NSLog call for display to the user:
+2009-10-07 11:14:06.756 t[5724] Largest number is 20</string>
+	</dict>
+</dict>
+</plist>
